@@ -1,17 +1,17 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 
-export default function Book() {
+export default function Book( { book }) {
   return (
     <div className='book'>
                         <a href=''>
                             <figure className='book__img--wrapper'>
-                                <img className='book__img' src='https://covers.openlibrary.org/b/id/8091016-L.jpg'/>
+                                <img className='book__img' src={book.url}/>
                             </figure>
                         </a>
                         <div className='book__title'>
                             <a href='/' className='book__title--link'>
-                                Atomic Habits
+                                {book.title}
                             </a>
                         </div>
                         <div className='book__ratings'>
@@ -22,8 +22,8 @@ export default function Book() {
                             <FontAwesomeIcon icon="star-half-alt"/>
                         </div>
                         <div className='book__price'>
-                            <span className='book__price--normal'>$15.00</span>
-                            $10.00
+                            <span className='book__price--normal'>${book.originalPrice}</span>
+                            {book.salePrice}
                         </div>
                     </div>
   )
