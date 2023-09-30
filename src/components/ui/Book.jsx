@@ -22,8 +22,18 @@ export default function Book( { book }) {
                             <FontAwesomeIcon icon="star-half-alt"/>
                         </div>
                         <div className='book__price'>
-                            <span className='book__price--normal'>${book.originalPrice}</span>
-                            {book.salePrice}
+                            {book.salePrice ? ( 
+                                // IF IT EXIST lart
+
+                                // DO THIS
+                                <> 
+                                <span className='book__price--normal'>${book.originalPrice.toFixed(2)}</span>
+                                {book.salePrice.toFixed(2)} 
+                                </>
+                            ) : (
+                               <> {book.originalPrice.toFixed(2)} </> 
+                            )}
+                           
                         </div>
                     </div>
   )

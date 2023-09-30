@@ -10,7 +10,7 @@ function App() {
       <Nav/>
       <Landing/>
       <Highlights/>
-      <Featured></Featured>
+      <Featured/>
     </div>
   );
 }
