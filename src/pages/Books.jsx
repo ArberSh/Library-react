@@ -1,6 +1,7 @@
 import React from 'react'
+import Book from '../components/ui/Book'
 
-export default function Books () {
+export default function Books ({ books }) {
   return (
     <div id='books__body'>
         <main id='books__main'>
@@ -15,6 +16,11 @@ export default function Books () {
                                 <option value='HIGH_TO_LOW'>Price, High to Low</option>
                                 <option value='RATING'>Rating</option>
                             </select>
+                        </div>
+                        <div className='books'>
+                            {books.map((book)=> (
+                                <Book book={book} key={book.id}/>
+                            ))}
                         </div>
                     </div>
                 </div>
