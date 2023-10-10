@@ -52,6 +52,10 @@ export default function Cart() {
                         <span>Total</span>
                         <span>$10.00</span>
                     </div>
+                    <button className='btn btn__checkout no-cursor'
+                    onClick={() => alert(`Haven't got around to doing this :/` )}>
+                        Proceed to checkout
+                    </button>
                 </div>
             </div>
         </main>
