@@ -27,7 +27,7 @@ function App() {
         <Route path="/" element={<Home/>} />
         <Route path="/books" element={<Books books={books}/>}></Route>
         <Route path="/books/:id" element={<BookInfo books={books} addToCart={addToCart}/>}></Route>
-        <Route path="/cart" element={<Cart/>}></Route>
+        <Route path="/cart" element={<Cart cart={cart}/>}></Route>
        </Routes>
       <Footer/>
     </div>
@@ -35,4 +35,4 @@ function App() {
   );
 }
 export default App;
-// addToCart={addToCart} cart={cart}
+// addToCart={addToCart} 

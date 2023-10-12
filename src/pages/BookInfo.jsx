@@ -7,16 +7,20 @@ import Book from "../components/ui/Book";
 
 export default function BookInfo({ books,addToCart,cart }) {
   const {id} = useParams();
-  const book = books.find((book) => +book.id == +id)
-  // const [added,setAdded] = useState(false)
-
+  const book = books.find((book) => +book.id === +id)
+  const [added,setAdded] = useState(false)
   function addBookToCart(book){
     //  setAdded(true)
     addToCart(book)
   }
 
   function bookExistsOnCart(){
-    return cart.find(book => book.id === +id);
+    if(cart){
+      cart.find(book => book.id === +id)
+    }
+    else{
+      return console.log('empty cart')
+    }
   }
 
   return (
@@ -60,11 +64,15 @@ export default function BookInfo({ books,addToCart,cart }) {
                       </p>
                   </div>
                   {bookExistsOnCart() ? (
+                    
                     <button className="btn">Checkout</button>
+                    
                   ) : (
+                  <Link to={`/cart`} className="book__link">
                   <button className="btn" onClick={() => addBookToCart(book)}>
                     Add to cart
                   </button>
+                  </Link>
                   )}
                 </div>
               </div>

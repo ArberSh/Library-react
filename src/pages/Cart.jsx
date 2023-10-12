@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Cart() {
+export default function Cart({cart}) {
   return (
     <div id='books__body'>
         <main id='books__main'>
@@ -15,15 +15,18 @@ export default function Cart() {
                         <span className='cart__total'>Price</span>
                     </div>
                     <div className='cart__body'>
-                        <div className='cart__item'>
+                        {
+                            cart.map(book => {
+                                return (
+<div className='cart__item'>
                             <div className='cart__book'>
-                                <img src='https://covers.openlibrary.org/b/id/8091016-L.jpg' className='cart__book--img' alt=''></img>
+                                <img src={book.url} className='cart__book--img' alt=''></img>
                                 <div className='cart__book--info'>
                                     <span className='cart__book--title'>
-                                        Crack the coding interview
+                                        {book.title}
                                     </span>
                                     <span className='cart__book--price'>
-                                        $10,000
+                                        {(book.salePrice || book.originalPrice).toFixed(2)}$
                                     </span>
                                     <button className='cart__book--remove'>
                                         Remove
@@ -37,6 +40,10 @@ export default function Cart() {
                                 $10.00
                             </div>
                         </div>
+                                )
+                            })
+                        }
+                        
                     </div>
                 </div>
                 <div className='total'>
