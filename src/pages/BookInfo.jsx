@@ -9,19 +9,11 @@ export default function BookInfo({ books,addToCart,cart }) {
   const {id} = useParams();
   const book = books.find((book) => +book.id === +id)
   const [added,setAdded] = useState(false)
+
   function addBookToCart(book){
-    //  setAdded(true)
     addToCart(book)
   }
 
-  function bookExistsOnCart(){
-    if(cart){
-      cart.find(book => book.id === +id)
-    }
-    else{
-      return console.log('empty cart')
-    }
-  }
 
   return (
     <div id="books__body">
@@ -63,16 +55,16 @@ export default function BookInfo({ books,addToCart,cart }) {
                         commodo consequat. 
                       </p>
                   </div>
-                  {bookExistsOnCart() ? (
-                    
+                  {added ? (
+                    <Link to={`/cart`} className="book__link">
                     <button className="btn">Checkout</button>
-                    
+                    </Link>
                   ) : (
-                  <Link to={`/cart`} className="book__link">
+                  
                   <button className="btn" onClick={() => addBookToCart(book)}>
                     Add to cart
                   </button>
-                  </Link>
+                  
                   )}
                 </div>
               </div>
