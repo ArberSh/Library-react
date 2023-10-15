@@ -14,7 +14,9 @@ export default function BookInfo({ books,addToCart,cart }) {
     addToCart(book)
   }
 
-
+  function bookExistOnCart(){
+    return cart.find(book => book.id === +id)
+  }
   return (
     <div id="books__body">
       <main id="books__main">
@@ -55,9 +57,11 @@ export default function BookInfo({ books,addToCart,cart }) {
                         commodo consequat. 
                       </p>
                   </div>
-                  {added ? (
+                  {
+                  bookExistOnCart() 
+                  ? (
                     <Link to={`/cart`} className="book__link">
-                    <button className="btn">Checkout</button>
+                      <button className="btn">Checkout</button>
                     </Link>
                   ) : (
                   
