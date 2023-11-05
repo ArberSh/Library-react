@@ -55,7 +55,6 @@ export default function Book({ book }) {
           <div className="skeleton book__price--skeleton"></div>
         </>
       )}
-      
     </div>
   );
 }
