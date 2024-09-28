@@ -6,23 +6,23 @@ import Price from "./Price";
 
 export default function Book({ book }) {
   const [img, setImg] = useState();
-    const mountedRef = useRef(false)
+  const mountedRef = useRef(true);
 
-  useEffect(()=> {
-    const image = new Image()
-    image.src = book.url
+  useEffect(() => {
+    const image = new Image();
+    image.src = book.url;
+    console.log(image)
     image.onload = () => {
-        setTimeout(()=> {
-            if(mountedRef.current){
-                setImg(image)
-            }
-        },300)
-    } 
-    return ()=> {
-        // when the component unmounts
-        mountedRef.current = true
-    }
-  })
+      setTimeout(() => {
+          setImg(image);
+        
+      }, 300);
+    };
+  
+    return () => {
+      // Set to false when the component unmounts
+    };
+  }, [book.url]);
 
   return (
     <div className="book">
@@ -30,7 +30,7 @@ export default function Book({ book }) {
         <>
           <Link to={`/books/${book.id}`}>
             <figure className="book__img--wrapper">
-              <img className="book__img" src={img.src} />
+              <img className="book__img" src={img.src} alt={book.title} />
             </figure>
           </Link>
           <div className="book__title">
@@ -41,12 +41,10 @@ export default function Book({ book }) {
           <div className="book__ratings">
             <Rating rating={book.rating} />
           </div>
-          <Price
-            salePrice={book.salePrice}
-            originalPrice={book.originalPrice}
-          />
+          <Price salePrice={book.salePrice} originalPrice={book.originalPrice} />
         </>
       ) : (
+        // Skeleton loader while image is loading
         <>
           <div className="book__img--skeleton"></div>
           <div className="skeleton book__title--skeleton"></div>

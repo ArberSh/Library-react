@@ -11,6 +11,8 @@ export default function Explore() {
                 <a href='/books'>
                     <button className='btn'>Explore books</button>
                 </a>
+            <img src={`./assets/book-1.jpeg`}></img>
+
             </div>
         </div>
     </section>
